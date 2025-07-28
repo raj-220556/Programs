@@ -1,0 +1,22 @@
+body{
+    font-family: verdana;
+    text-align: center;
+}
+#myButton{
+    font-size: 3em;
+    font-weight: bold;
+    padding: 5px 25px;
+    border-radius: 100em;
+    color: white;
+    background-color: aqua;
+    transition: 0.25s;
+    cursor: pointer;
+
+}
+/* #myLabel{
+    font-size: 3em;
+} */
+
+.myLabels{
+    font-size: 3em;
+}

@@ -1,0 +1,53 @@
+Lab Tasks
+
+Lab-01
+Date: 7/01/2025 (Arrays)
+1. Reverse array.
+2. Reverse only half of the array and by input of left side or right side of array.
+3. Sort array on the basis of even and odd index position elements.
+4. Remove duplicate elements from array.
+
+Lab-02
+Date: 21/01/25 (Strings)
+1. User Enter the String(sentence) and Capitalize the First character in a words of String
+2. SubString Present or not and Show the index of Starting
+3. Read .txt file and convert it into tokens
+(Don't use Built in functions)
+
+Lab-03
+Date: 28/01/25 (Question)
+Question
+• Suppose you are developing a program for a small grocery store. Your program will have a GroceryStore class that represents the store and a Product class that represents a product sold in the store.
+• The Product class should have the following instance variables:
+    ◦ name (a string)
+    ◦ price (a double)
+    ◦ quantity (an integer)
+• The GroceryStore class should have the following static variables:
+    ◦ numProducts (an integer)
+    ◦ totalRevenue (a double)
+• The GroceryStore class should also have the following methods:
+    ◦ addProduct(Product p): adds a Product object to the store's inventory.
+    ◦ sellProduct(Product p, int quantity): removes a specified quantity of a product from the store's inventory and adds the revenue from the sale to the store's total revenue.
+    ◦ displayStats(): displays the number of products in the store's inventory and the store's total revenue.
+• Write a Java program that creates a GroceryStore object and adds several Product objects to the store's inventory. The program should use method/constructor overloading to create different Product objects with different sets of instance variables. The program should also use static variables/methods/blocks to keep track of the number of products in the store's inventory and the store's total revenue.
+
+Lab-04
+Date: 4/2/2025 (Inheritance)
+                vehicle
+                   |
+            -------------------
+            |                 |
+        2Wheeler           4wheeler
+            |                 |
+      ------------        -----------
+      |          |        |         |
+     Bike      Cycle    truck      Car
+    (Create Your own Methods and instance variables and access them)
+
+Lab-05
+Date: 11/2/25  
+Create a your own "Universitiy" Strucutre having
+->Interfaces -extend : min 2
+->Abstract classes : min 3
+->polymorphism
+->Multiple Inheritance

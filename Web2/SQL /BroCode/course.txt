@@ -1,0 +1,194 @@
+==== SQL ====
+Structed Query Language (SQL)
+SQL is used to create, retrive, update, delete data from the database.
+TWO Types of DataBases:
+1.Relational DataBase.(It have rows & columns ex: Excel)
+language: SQL
+2.Non-Relational Database.(Json files, key value pairs,graph data structure)
+Language: NoSQL
+
+DataBase Managent System is used to work on DataBase.
+ex: MySQL, PostgreSQL, Microsoft SQL Server.
+-> Each having different Syntax
+
+
+==== MySQL ====
+->Database Contains Tables.
+->Their is no case sensitive in mysql.
+Create or CREATE or create all are accepted.
+
+---- DataBase ---
+   "Think it is a just as folder and files are in folder is Tables"
+
+* CREATE DATABASE CourseDB;
+-> It creates DataBase that has Named CourseDB
+-> command must end with semicolum ';'
+
+=> Their is also a DataBase sys, sys is the database that mysql uses.
+
+* USE CourseDB;
+-> It makes our DB as Default Schema
+
+* DROP DATABASE CourseDB;
+-> DataBase is Deleted.
+
+* ALTER DATABASE CourseDB READ ONLY = 1;
+-> It makes our DataBase read only mode.
+-> In this mode we can't make any modifications to it but we can still access data.
+ex: can't DROP, 
+
+* ALTER DATABASE CourseDB READ ONLY = 0;
+-> remove readonly mode
+
+----- Tables ----
+  " Tables in a Relational DataBase They consist of rows and columns like an Excel spread sheet."
+
+* CREATE TABLE employees (
+	employpee_id INT,
+	first_name VARCHAR(50), // maximum 50 characters
+	last_name VARCHAR(50),
+	hourly_pay DECIMAL(5,2), // maximum 5 digts & 2 decimal part max num : 999.99
+	hire_data DATE
+);
+-> It creates a Table employees with columns that have given
+
+* SELECT * FROM employees;
+-> * : all
+-> It selects employees Table & shows employees table
+
+* RENAME TABLE employees TO workers;
+* DROP TABLE workers;
+
+* ALTER TABLE employees ADD phone_number VARCHAR(15);
+-> ADDs phone_number column in TABLE
+
+* ALTER TABLE employess RENAME COLUMN phone_number TO email;
+-> Rename a column, here datatype not changed
+
+* ALTER TABLE employees
+  MODIFY COLUMN email VARCHAR(100);
+-> Changes the datatype into requried once.
+
+* ALTER TABLE employees
+  MODIFY email VARCHAR(100)
+  AFTER last_name;
+-> Makes the email column after to the last_name column
+
+* ALTER TABLE employees
+  MODIFY email VARCHAR(100)
+  FIRST;
+-> Makes the email column first to the TABLE
+
+* ALTER TABLE employees
+  DROP COLUMN email;
+-> To DROP a Column email
+
+----- Insert Rows -----
+* INSERT INTO employees 
+  VALUES():
+-> In VALUES(follow the order of the column type)
+
+* INSERT INTO employees
+  VALUES(1, "Eugene", "Krabs", 25.50, "2023-01-02");
+->Inserted a row in TABLE
+
+* SELECT * FROM employees;
+-> TO Observe data in the TABLE
+
+* INSERT INTO employees
+  VALUES (), (), (), (), ();
+ -> Enter Multiple rows of data
+ 
+* INSERT INTO employees
+  VALUES  (2, "Squidward", "Tentacles", 15.00, "2023-01-03"),
+   	  (3, "Spongebob", "Squarepants", 12.50, "2023-01-04"),
+   	  (4, "Patrick, "Star", 12.50, "2023-01-05"),
+   	  (5, "Sandy", "Cheeks", 17.25, "2023-01-06");
+
+* INSERT INTO employees
+  VAlUES (6, "Sheldon", "Plankton");
+-> Data with missing columns
+-> gives error cloumn count doesn't match row
+
+* INSERT INTO employees (employee_id, first_name, last_name)
+  VALUES (6, "Sheldon", "Plankton");
+-> Now it accepts as a row with missing data in row.
+
+----- SELECT ------
+* SELECT * FROM employees;
+-> selects all the table
+
+* SELECT first_name, last_name 
+  FROM employess;
+-> Return all first_name & last_name 
+
+* SELECT *
+  FROM employees
+  WHERE employee_id = 1;
+-> gives employee_id = 1 row data
+
+* SELECT *
+  FROM employees
+  WHERE first_name = "Spongebob";
+-> gives "Spongebob" row data 
+
+* SELECT *
+  FROM employees
+  WHERE hourly_pay >= 15;
+-> gives rows whose hourly_pay >= 15
+
+* SELECT *
+  FROM employees
+  WHERE hire_date <= "2023-01-03";
+  
+* SELECT *
+  FROM employees
+  WHERE employee_id != 1;
+  
+* SELECT *
+  FROM employees
+  WHERE employee_id = 1;
+  
+--> Finding NULL values
+* SELECT * 
+  FROM employees
+  WHERE hire_date IS NULL;
+-> returns all rows having hire_date IS NULL
+-> hire_date = NULL is doesn't work must use IS
+
+* SELECT * 
+  FROM employees
+  WHERE hire_date IS NOT NULL;
+
+------ UPDATE & DELETE -----
+* UPDATE employees 
+  SET hourly_pay = 10.25
+  WHERE employee_id = 6;
+-> It changes where id = 6 SETs hourly_pay = 10.25
+
+* UPDATE employees 
+  SET hourly_pay = 10.50,
+      hire_date = "2023-01-07"
+  WHERE employee_id = 6;
+
+* UPDATE employees 
+  SET hourly_pay = NULL
+  WHERE employee_id = 6;
+
+* UPDATE employess 
+  SET hire_date = "2023-01-01";
+-> It changes all rows hire_date as same
+
+---
+
+* DELETE FROM employees;
+-> Delete all rows in a TABLE
+
+* DELETE FROM employees 
+  WHERE employee_id = 6
+-> It delete a row where employee_id = 6.
+
+------- AUTOCOMMIT, COMMIT, ROLLBACK ------
+AUTOCOMMIT :
+COMMIT :
+ROLLBACK :

@@ -1,0 +1,16 @@
+CSE-2 OOPS Tasks
+
+Class tasks:
+    1.Write a code print predefined array values.
+    2.Write a code to create an array with size given input by user and also 
+      fill the array with user given values.
+    3.sort the array by using any sorting technic.
+    
+    Date:07/01/2025
+    4.Create array by user input order of M*N and transppose array.
+    5.Create Identical Matrix.
+
+
+    
+    
+    

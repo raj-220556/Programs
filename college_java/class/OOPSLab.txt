@@ -1,0 +1,109 @@
+Lab tasks:
+    Lab-01
+    Date:7/01/2025 (Arrays)
+    1.Reverse array.
+    2.Reverse only half of the array and by input of left side or right side of array.
+    3.Sort array on the basis of even and odd index position elements.
+    4.Remove duplicate elements from array.
+    
+    Lab-02
+    Date:21/01/25 (Strings)
+    1.User Enter the String(sentence) and Capitalize the First character in a words of String
+    2.SubString Present or not and Show the index of Starting
+    3.Read .txt file and convert it into tokens
+    (Dont use Built in functions)
+    
+    Lab-03
+    Date:28/01/25 (Class and objects)
+    Question
+    • Suppose you are developing a program for a small grocery store. Your program will have a GroceryStore class 					that represents the store and a Product class that represents a product sold in the store.
+    • The Product class should have the following instance variables:
+        ◦ name (a string)
+        ◦ price (a double)
+        ◦ quantity (an integer)
+    • The GroceryStore class should have the following static variables:
+        ◦ numProducts (an integer)
+        ◦ totalRevenue (a double)
+    • The GroceryStore class should also have the following methods:
+        ◦ addProduct(Product p): adds a Product object to the store's inventory.
+        ◦ sellProduct(Product p, int quantity): removes a specified quantity of a product from the store's inventory and adds the revenue from the sale to the store's total revenue.
+        ◦ displayStats(): displays the number of products in the store's inventory and the store's total revenue.
+    • Write a Java program that creates a GroceryStore object and adds several Product objects to the store's inventory. The program should use method/constructor overloading to create different Product objects with different sets of instance variables. The program should also use static variables/methods/blocks to keep track of the number of products in the store's inventory and the store's total revenue.
+
+
+    Lab-04
+    Date:4/2/2025 (Inheritance)
+                vehicle
+                   |
+            -------------------
+            |                 |
+        2Wheeler           4wheeler
+            |                 |
+      ------------        -----------
+      |          |        |         |
+     Bike      Cycle    truck      Car
+    (Create Your own Methods and instance variables and access them)
+    
+    Lab-05
+    Date:11/2/25 (OOPS concepts) 
+    Create a your own "Universitiy" Strucutre having
+    ->Interfaces -extend : min 2
+    ->Abstract classes : min 3
+    ->polymorphism
+    ->Multiple Inheritance
+
+
+    Lab-06
+    Date:18/2/25 (File Handling)
+    1.Write a program to read the file and display all the attributes of file.
+        (attributes means Details of a File)
+    2.Write a program to accepts the directory name and display it's 
+      Contents into an Array.
+    3.Read a File and display longest word and it's Size.
+    4.Write a program that accepts FIle along a Comand line Arugument
+      Display no.of Characters, words and Lines in a file.
+    5.Write a Code Print your own Code.
+
+
+    Lab-07
+    Date:25/2/25 (Exception Handling)
+    1.Banking Application
+        -> Two Customize Exception
+            a.While Deposit Balance must be less than 50000/-
+            b.Negaitive Withdraw Amount.
+        ->Take deposit and Withdraw by user.
+    2.Read a Number from a File
+        ->Take a Number From User (a)
+        ->Divide FileNumber By a.
+        ->Exceptions
+            a.Division With Zero (ArithmeticException)
+            b.Number Not Found in a File (IOException)
+        ->File Contains String and Numbers. If File have Multiple numbers then take 
+            first number as a FileNumber.
+
+    Lab-08
+    Date:18/3/25 (Multi Threading)
+    1.Java Inter-Thread Communication Question 
+        Problem Statement: 
+        You are tasked with developing a Java program that demonstrates inter-thread communication using 
+        the wait(), notify(), and notifyAll() methods. 
+        The program should simulate a Producer-Consumer scenario where: 
+        • The Producer thread generates numbers (from 1 to 10) and adds them to a shared list. 
+        The Consumer thread removes and prints the numbers from the shared list. 
+        • The shared list has a capacity of 5 elements. The producer must wait if the list is full. 
+        • The consumer must wait if the list is empty. 
+        • Use synchronized methods and wait/notify for coordination.
+    2.The program should simulate a server monitoring system where: 
+        • A daemon thread (ServerMonitor) continuously checks the server status every 500ms and prints "Monitoring server... 
+        • A worker thread (WorkerTask) performs a critical operation (e.g., processing tasks) and runs for 5 seconds before stopping. 
+        • The daemon thread should automatically stop when the worker thread finishes execution. 
+        • Ensure proper synchronization where the main thread waits for the worker to complete execution before terminating. 
+ 
+
+    Lab-09
+    Date:25/3/25 (Event Handling)
+    1.Registration Field Which having all Components
+    2.Caluculator
+
+
+    

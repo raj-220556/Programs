@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../Desktop/c"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"25Q.C": "cpp",
+			"stdio.h": "c"
+		}
+	}
+}

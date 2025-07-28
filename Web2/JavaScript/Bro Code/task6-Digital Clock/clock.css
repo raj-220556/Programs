@@ -1,0 +1,25 @@
+body{
+    background-image: url(Digitalclockbackground.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+
+}
+#clockContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;  /*It makes Items as vertically align */
+    height: 100vh;   /*It makes the container to center*/   
+}
+#clock{
+    font-family: monospace;
+    font-size: 6.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    backdrop-filter: blur(2px);
+    background-color: rgba(255, 1, 1, 0.050);
+    width: 100%;
+}

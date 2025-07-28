@@ -1,0 +1,1 @@
+# writen in notes read and do code

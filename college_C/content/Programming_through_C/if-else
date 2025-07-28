@@ -1,0 +1,108 @@
+Simple if statment in python
+
+	if condition :
+		<stmts>
+		
+Simple if statement in C
+
+	if ( condition )
+	{
+		<stmts>
+		
+		
+	}
+	
+if -else in python
+	
+		if condition :
+			<stmts>
+		else :
+			<stmts>
+			
+if-else in C 
+		if ( condition)
+		{
+			<stmts1>
+		
+		}
+		else
+		{
+			<stmts2>
+		
+		
+		}
+		
+else-if ladder :
+		if ( condition1)
+		{
+			<stmts1>
+		}
+		else if ( condition2)
+		{
+			<stmts2>
+		}
+		else if ( condition3)
+		{
+			<stmts3>
+		}
+		.
+		.
+		.
+		else
+		{
+		
+		
+		}
+
+Nested if-else
+	
+		if ( condition1)
+		{
+			// stmts1
+				if ( condition2)
+				{
+					// stmts2
+				}
+				else
+				{
+					// stmts3
+				}
+		
+			// stmts4
+		}
+		else
+		{
+			// stmts 5
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					
+			
+			
+			
+
+
+
+
+
+	
+	

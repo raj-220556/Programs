@@ -1,0 +1,1 @@
+// 6.Write a C program implement the Queues ADT(linear DS) using Array and Double Linked List

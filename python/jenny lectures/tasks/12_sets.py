@@ -1,0 +1,1 @@
+# writen in notes raeed and do code of all methods of a set

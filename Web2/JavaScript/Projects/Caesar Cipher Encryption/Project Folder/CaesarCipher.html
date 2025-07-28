@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar Cipher Encryption</title>
+    <link rel = "stylesheet" href = "CaesarCipher.css">
+</head>
+<body>
+
+    <h1 id = "heading">Caeser Cipher Encryption</h1>
+    
+    <div>
+         <button onclick="left()">left</button>
+         <input type = "number" id = "inputNum" value = "0" min = "1" max = "25">
+         <button onclick="right()">right</button><br>
+    </div>
+
+    <div class = "inputText">
+        <label for = "inputTextBox">Input Text :</label><br>
+        <input id = "inputTextBox">
+    </div>
+
+    <div id = "errormsg" class = "errorDisabled">
+        ERROR MSG
+    </div>
+
+    <button onclick="startEncryption()">Submit</button>
+
+    <div id = "sidebox">
+        Please Select side.
+    </div>
+
+    <div class = "outputText">
+        <label for = "outputTextBox">Output Text :</label><br>
+        <div id = "outputTextBox">
+            This Is output is a princile
+            out of gang
+        </div>
+    </div>
+
+
+
+    <div>
+        <p></p>
+    </div>
+
+    <script src = "CaesaeCipher.js"></script>
+</body>
+</html>

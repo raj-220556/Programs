@@ -1,0 +1,4 @@
+
+It is data that entered after that file is alread createad by checking file is appending data or not if not you may
+see only this data
+Hi i am using the BufferedOutput Strem and also using FileInputStream true ffor apprnding data

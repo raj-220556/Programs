@@ -1,0 +1,14 @@
+#countlabel {
+    display: block;
+    text-align: center;
+    font-size: 10em;
+    font-family: Helvetica;
+    margin-bottom: 20px; /* Add some space below the label */
+}
+
+.buttons {
+    font-size: 2em; /* Increase button font size */
+    padding: 10px 20px; /* Add padding for better click area */
+    margin: 5px; /* Add margin between buttons */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
