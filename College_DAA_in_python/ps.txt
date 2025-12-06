@@ -1,0 +1,369 @@
+#subset sum problem
+def dfs(arr, T, cur_ind, cur_sum, current_subset):
+    global solution
+    n = len(arr)
+    if cur_sum == T:
+        solution = current_subset.copy()
+        print(solution)
+        return
+    # 🔁 Loop through choices from 'cur_ind' index
+    for j in range(cur_ind, n):
+        if cur_sum + arr[j] <=T:       
+          current_subset.append(arr[j])    # Choose arr[j]
+          dfs(arr, T, j + 1, cur_sum + arr[j], current_subset)
+          current_subset.pop()  # backtrack
+#.......................................................................
+arr = [3, 34, 4, 12, 5, 2]
+T = 9
+solution = []
+dfs(arr, T, 0, 0, [])
+
+
+*# Print all permutation using backtracking*
+def backtrack(selected, count):
+    global nums, ndef insertion(a):
+    for i in range(1,n):
+        temp=a[i]
+        j=i-1
+        while a[j] > temp and j >= 0:
+            a[j+1] = a[j]
+            j=j-1 
+        a[j+1] = temp     
+    return a
+start = time.time()
+print(insertion(a))
+end= time.time()
+print("time taken:",end-start) 
+    if count == n: 
+       print(selected) # all permutation
+    
+    # Explore next elements
+    for i in range(n):
+      if nums[i] not in selected:
+        selected.append(nums[i])
+        backtrack(selected, count + 1)  # move to next index
+        selected.pop()  # backtrack
+
+# Example
+nums = [1, 2, 3]
+n = len(nums)
+backtrack([], 0)
+
+
+*# Print all combination using backtracking*
+def backtrack(selected, cur_Ind):
+    global nums, n
+    #print(selected) # all combination
+    if cur_Ind == n: 
+       print(selected) # all combinatinetorial solution
+    
+    # Explore next elements
+    for i in range(cur_Ind, n):
+        selected.append(nums[i])
+        backtrack(selected, i + 1)  # move to next index
+        selected.pop()  # backtrack
+
+# Example
+nums = [1, 2, 3]
+n = len(nums)
+backtrack([], 0)
+
+# N Queen
+def print_board(B):
+    for row in B:
+        print(" ".join("Q" if col else "." for col in row))
+    print()
+
+def feasible(B, r, c,n):
+    for i in range(r-1,-1,-1):
+        j = r-i
+        if (B[i][c]) or ((c-j>=0) and B[i][c-j]) or ((c+j<n) and B[i][c+j]):
+            return False
+    return True
+
+def solve_n_queens(board, row, n):
+    if row == n:
+        print_board(board)
+        #return False #false means Continue
+    for col in range(n):
+        if feasible(board, row, col,n):
+            board[row][col] = 1
+            ok = solve_n_queens(board, row + 1, n)
+            board[row][col] = 0  # backtrack
+    #return False
+
+def n_queens(n):
+    board = [[0]*n for _ in range(n)]
+    solve_n_queens(board, 0, n)
+
+# Example usage
+n_queens(4)
+
+*# Graph coloring using backtracking*
+*def is_valid(u, c):* #"""Check if assigning color c to vertex u is valid"""
+    for i in range(u):
+        if d[i][u] == 1 and color[i] == c:
+            return False
+    return True
+
+*def coloring(color,u):*
+    global d, k
+    if u == n:
+        print("sol",color)
+        return
+    for c in range(1, k + 1):
+        if is_valid(u, c):
+            color.append(c)
+            coloring(color,u + 1)
+            color.pop()  *# backtrack*
+#.........................................................................
+*# Adjacency matrix*
+d = [
+    [0, 1, 1, 1],
+    [1, 0, 1, 1],
+    [1, 1, 0, 0],
+    [1, 1, 0, 0]]
+n = 4       # number of vertices
+k = 3       # number of colors
+color = []
+print("Graph Coloring Solutions:")
+*coloring(color,0)*
+
+# Travelling salesmen problem TSP
+
+# Distance matrix
+dist = [
+    [0, 10, 15, 20],
+    [10, 0, 35, 25],
+    [15, 35, 0, 30],
+    [20, 25, 30, 0]
+]
+
+n = len(dist)
+full_mask = (1 << n) - 1  # all cities visited
+
+
+def dp(mask, i):
+ 
+    # Base case: all cities visited → return to start
+    if mask == full_mask:
+        return dist[i][0], [i, 0]
+    best_cost = math.inf
+    best_path = []
+    # Try next city j
+    for j in range(n):
+        if not (mask & (1 << j)):  # if city j not visited
+            cost = dp(mask | (1 << j), j)
+            new_cost = cost + dist[i][j]
+            if new_cost < best_cost:
+                best_cost = new_cost
+  
+
+    return best_cost
+
+# Start from city 0 with only city 0 visited
+cost= dp(1 << 0, 0)
+
+print("Minimum TSP cost:", cost)
+
+# Insertion sort
+def insertion(a):
+    for i in range(1,n):
+        temp=a[i]
+        j=i-1
+        while a[j] > temp and j >= 0:
+            a[j+1] = a[j]
+            j=j-1 
+        a[j+1] = temp     
+    return a
+start = time.time()
+print(insertion(a))
+end= time.time()
+print("time taken:",end-start) 
+
+# Merge sort
+a = [987, 567, 432, 232, 12, 32, 24]
+
+def merge_sort(a, l, h):
+    if l < h:
+        mid = (l + h) // 2
+        merge_sort(a, l, mid)
+        merge_sort(a, mid + 1, h)
+        merge(a, l, mid, h)
+
+def merge(a, l, mid, h):
+    L = a[l:mid + 1]
+    R = a[mid + 1:h + 1]
+    i = j = 0
+    k = l
+
+    while i < len(L) and j < len(R):
+        if L[i] <= R[j]:
+            a[k] = L[i]
+            i += 1
+        else:
+            a[k] = R[j]
+            j += 1
+        k += 1
+ 
+    while i < len(L): #to copy leftovers of L
+        a[k] = L[i]
+        i += 1
+        k += 1
+
+    while j < len(R):
+        a[k] = R[j]
+        j += 1
+        k += 1
+
+# Call the function
+merge_sort(a, 0, len(a) - 1)
+
+# Quick sort
+def quick_sort(a, l, h):
+    if l < h:
+        p = partition(a, l, h)
+        quick_sort(a, l, p - 1)
+        quick_sort(a, p + 1, h)
+
+def partition(a, l, h):
+    pivot = a[l]   # Choose first element as pivot
+    i = l + 1
+    j = h
+
+    while i<=j:
+        # Move i to the right while elements <= pivot
+        while i <= j and a[i] <= pivot:
+            i += 1
+        # Move j to the left while elements > pivot
+        while i <= j and a[j] > pivot:
+            j -= 1
+
+        if i <= j:
+            a[i], a[j] = a[j], a[i]
+        else:
+            break
+
+    # Swap pivot into its correct position
+    a[l], a[j] = a[j], a[l]
+    return j   # Return final pivot index
+
+quick_sort(a, l, h)
+
+# heap sort
+
+def heapify(arr, n, i):
+    largest = i          # Initialize largest as root
+    left = 2 * i + 1     # Left child index
+    right = 2 * i + 2    # Right child index
+
+    # If left child is larger than root
+    if left < n and arr[left] > arr[largest]:
+        largest = left
+
+    # If right child is larger than largest so far
+    if right < n and arr[right] > arr[largest]:
+        largest = right
+
+    # If largest is not root
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]  # Swap
+        heapify(arr, n, largest)  # Recursively heapify the affected subtree
+
+
+def heap_sort(arr):
+    n = len(arr)
+
+    # Build a maxheap
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+
+    # Extract elements one by one
+    for i in range(n - 1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i]   # Swap
+        heapify(arr, i, 0)                # Heapify reduced heap
+
+
+# '''krushkal'''    
+#Kruskal’s Algorithm for MST
+
+# edges = [                    # 1
+#     [0, 1, 10],
+#     [0, 2, 6],
+#     [0, 3, 5],
+#     [1, 3, 15],
+#     [2, 3, 4]
+# ]
+
+# # sort edges by weight
+# edges.sort(key=lambda x: x[2])   # 2
+
+# parent = [i for i in range(4)]   # 3  (4 vertices: 0..3)
+
+# def find(u):                      # 4
+#     while parent[u] != u:         # 5
+#         u = parent[u]             # 6
+#     return u                      # 7
+
+# def union(u, v):                  # 8
+#     parent[find(u)] = find(v)     # 9
+
+# mst = []                          # 10
+# total = 0                         # 11
+
+# for u, v, w in edges:             # 12
+#     if find(u) != find(v):        # 13
+#         union(u, v)               # 14
+#         mst.append([u, v, w])     # 15
+#         total += w                 # 16
+
+# print("MST edges:", mst)          # 17
+# print("Total weight:", total)     # 18
+
+
+# '''dijkstra'''
+# import heapq
+# import math
+
+# def dijkstra(graph, source):
+#     # Finding number of vertices in graph
+#     numOfVer = len(graph)
+    
+#     # Initialise all other vertices distances as infinity and parent array with none
+#     dist = [math.inf] * numOfVer
+#     par = [None] * numOfVer
+#     # Initialise source vertex distance as zero and parent vertex of source is itself only
+#     dist[source] = 0
+#     par[source] = source
+    
+#     minheap = [(0, source)]  # list of tuples where each tuple contains distance, vertex
+#     while minheap:
+#         d, u = heapq.heappop(minheap)  # extracting min distance vertex
+        
+#         if d > dist[u]:  # check to skip if a better path was already found
+#             continue
+        
+#         for v in range(numOfVer):
+#             if graph[u][v] != math.inf and dist[v] > dist[u] + graph[u][v]:
+#                 dist[v] = dist[u] + graph[u][v]
+#                 par[v] = u
+#                 heapq.heappush(minheap, (dist[v], v))
+                
+#     return dist, par
+
+# # Adjacency matrix representation
+# # Assuming 6 vertices (0 to 5)
+# # Initialize matrix with infinity
+# INF = math.inf
+# graph = [
+#     [0, 20, INF, INF, 50, INF],
+#     [20, 0, 60, INF, 30, 40],
+#     [INF, 60, 0, 10, 80, INF],
+#     [INF, INF, 10, 0, INF, 40],
+#     [50, 30, 80, INF, 0, 50],
+    
+#     [INF, 40, INF, 40, 50, 0]
+# ]
+
+# dist, par = dijkstra(graph, 0)
+# print("shortest dis:", dist)

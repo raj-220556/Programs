@@ -1,0 +1,166 @@
+
+/* Armstrong Number */
+declare
+	a integer := &a;
+	len integer := 0;
+	a1 integer;
+	s integer := 0;
+	i integer;
+	n integer;
+begin
+	a1 := a;
+	while a1 <> 0 loop
+		len := len +1;
+		a1 := trunc(a1/10);
+	end loop;
+	dbms_output.put_line(len);
+	a1 := a;
+	for i in 1..len loop
+		n := mod(a1,10);
+		a1 := trunc(a1/10);
+		s := s + n**len;
+	end loop;
+	dbms_output.put_line(s);
+	
+	if (s = a) then
+		dbms_output.put_line(a || ' is an Armstrong Number');
+	else
+		dbms_output.put_line(a || ' is not an Armstrong Number');
+	end if;
+end;
+/
+
+
+/* palindrome number */
+
+declare
+	num integer := &num;
+	rev integer := 0;
+	n1 integer;
+	a integer;
+begin
+	n1 := num;
+	while n1 <> 0 loop
+		a := mod(n1, 10);
+		n1 := trunc(n1/10);
+		rev := rev*10 + a;
+	end loop;
+	dbms_output.put_line(rev);
+	if (num = rev) then
+		dbms_output.put_line(num || ' is a palindrome number');
+	else
+		dbms_output.put_line(num || ' is not a palindrome number');
+	end if;
+end;
+/
+
+
+/* Perfect Number */
+
+declare
+	num integer := &num;
+	n1 integer;
+	s integer := 0;
+	i integer;
+begin
+	n1 := num;
+	for i in 1..num-1 loop
+		if (mod(num, i) = 0) then
+			s := s + i;
+		end if;
+	end loop;
+	dbms_output.put_line(s);
+	if (s = num) then 
+		dbms_output.put_line(num || ' is a perfect number');
+	else
+		dbms_output.put_line(num || ' is not a perfect number');
+	end if;
+end;
+/
+
+
+
+/* sum of digits of given number */
+
+declare
+	num integer := &num;
+	s integer := 0;
+	n1 integer;
+begin
+	n1 := num;
+	while n1 <> 0 loop
+		s := s + mod(n1,10);
+		n1 := trunc(n1/10);
+	end loop;
+	dbms_output.put_line(num || ' digits sum : ' || s);
+end;
+/
+
+
+
+/* prime numbers in given range */
+
+declare
+l integer := &l;
+u integer := &u;
+flag integer := 0;
+begin
+	dbms_output.put('Prime Numbers in between ' || l || ' and ' || u || ' : ');
+	for i in l..u loop
+		flag := 1;
+		for j in 2..i-1 loop
+			if (mod(i,j) = 0) then 
+				flag := 0; 
+				exit;
+			end if;
+		end loop;
+		if (flag = 1) then
+			dbms_output.put(i || ', ');
+		end if;
+	end loop;
+	dbms_output.put_line(' ');
+end;
+/
+
+
+
+-- no need of Lab observation.
+/* Reverse a given number */
+
+declare
+	num number := &num;
+	rev number := 0;
+	n1 number;
+begin
+	n1 := num;
+	while (n1 <> 0) loop
+		rev := rev *10 + mod(n1,10);
+		n1 := trunc(n1/10);
+	end loop;
+	dbms_output.put_line(num || ' reverse is ' || rev);
+end;
+/
+
+
+
+/* Sum of factors of given number */
+
+declare
+	num number := &num;
+	s number := 0;
+	n1 number;
+begin
+	n1 := num;
+	for i in 1..num loop
+		if (mod(n1,i) = 0) then
+			s := s + i;
+		end if;
+	end loop;
+	dbms_output.put_line(num || ' factors sum : ' || s);
+end;
+/
+
+
+
+       
+
