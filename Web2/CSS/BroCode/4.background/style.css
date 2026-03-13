@@ -1,0 +1,26 @@
+
+/* body{ */
+    /* background: linear-gradient(to left,orange, pink); */
+    /* This repeats its self once it reached last element so,*/
+    /* background-repeat: no-repeat; */
+    /* streched the back ground */
+    /* background-attachment: fixed; */
+/* }  */
+
+body{
+    background-image: url("img.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+
+p{
+    background: linear-gradient(to right, orange, white)
+}
+
+h1{
+    background:linear-gradient(to left, orange, white)
+
+}

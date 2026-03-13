@@ -1,0 +1,11 @@
+= check in tor project website
+== change setting in safest change other
+
+
+=== Tor Relays, Tor Bridges, Pluggable Transports & Obfsproxy ===
+Learn
+when need watch video.
+
+=== Tor Hidden Services, Security & Anonymity Practices ===
+-> thehiddenwiki.org for onion trusted sites
+-> search onion sites from ahmia.fi

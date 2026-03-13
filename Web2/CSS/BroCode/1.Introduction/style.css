@@ -1,0 +1,25 @@
+/* Cascadin Style sheets (CSS) */
+/* A style sheet language used for describing the presentation of a document written in markup language such as HTML */
+/* 
+    HTML = Structure
+    CSS  = Style
+    JS   = functionality
+*/
+
+p{
+    background-color: rgb(24, 22, 22);
+    color: white;
+}
+
+
+#p3{
+    color: green;
+}
+
+.even{
+    color: red;
+}
+
+.odd{
+    color: lightgreen;
+}

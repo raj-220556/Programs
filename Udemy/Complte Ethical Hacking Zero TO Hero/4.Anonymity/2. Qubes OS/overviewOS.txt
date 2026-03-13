@@ -1,0 +1,14 @@
+=== Qubes OS ===
+"It is Best OS For Anonymity"
+=> It is a OS Contain Bunch of Virtual Machines.
+=> Every Machine is spearated.
+
+
+==> DisposableVM
+   -> It is Used to RUN untrusted Files
+   -> If Machine is Damaged Then restart Machine we get again Machine Properly
+   -> Doesn't affect other Machines.
+   
+==> Serval Other VMs are their
+
+

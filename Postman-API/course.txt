@@ -1,0 +1,250 @@
+Resource : Postman API Fundamentals Student Expert
+=========== API ==========
+API :  Application Programming Interface 
+"An Application Programming Interface (API) is a contract that allows code to talk to other code"
+
+Why are APIs important?
+-> APIs help developers integrate exciting features and build automation without reinventing the wheel
+-> APIs allow enterprises to open up their product for faster innovation
+-> APIs can be products themselves
+
+Who benefits from APIs?
+Ultimately, everyone benefits from APIs either directly or indirectly because APIs make processes more efficient and
+connect the services we love and rely on.
+
+-- APIs - A Digital Restaurant --
+-----------------------------------------------------------------------------------------------------
+| Networking term	| Description 						| Restaurant analogy |
+-----------------------------------------------------------------------------------------------------|
+| Client	        | The requester. Ex: browser, web app, mobile app	| Customer           | 
+| API			| Simplified interface for interacting with the backend	| Waiter             |
+| Server		| The backend where the processing happens		| Kitchen            | 
+-----------------------------------------------------------------------------------------------------
+A customer who wants soup doesn't go into the kitchen to cook. They don't even have to know how to make soup! They only have to know how to ask the waiter for soup, expecting the waiter to bring back soup.
+
+APIs work the same way, but there are different names for the players involved. Instead of soup, the requester might ask for data or execution of a service. 
+
+--- Types of APIs ---
+1. Hardware APIs : Interface for software to talk to hardware.
+  ex: How your phone's camera talks to the operating system.
+2. Software Library APIs : Interface for directly consuming code from another code base.
+  ex: Using methods from a library you import into your application.
+3. Web APIs : 
+  ex: Fetching current stock prices from a finance API over the internet.
+
+Task : uploading a photo to Instagram
+ 1. Hardware API for the app to talk to your camera
+ 2. Software library API for the image to be processed with filters
+ 3. Web API for sending your image to Instagram's servers so your friends can like it!
+ 
+ -- Architectures --
+ There is more than one way to build and consume APIs. Some architecture types you may come across are:
+- REST (Representational State Transfer)
+- GraphQL
+- WebSockets
+- webhooks
+- SOAP (Simple Object Access Protocol)
+- gRPC (Google Remote Procedure Call)
+- MQTT (MQ Telemetry Transport)
+
+Here we talk about REST APIs
+REST APIs : 
+Some traits of REST APIs include not storing session state between requests, the ability to cache, and the ability
+to send and receive various data types.
+
+-- API Access --
+ 1. Public APIs (aka Open APIs) : Consumed by anyone who discovers the API
+ 2. Private APIs : Consumed only within an organization and not made public
+ 3. Partner APIs : Consumed between one or more organizations that have an established relationship
+ 
+ 
+	---- API World ----
+-> Postman is an API platform for building and using APIs.
+
+Working with APIs then and now: cURL vs. Postman
+"Before Postman, it was common practice to poke at APIs with a command line tool for making HTTP requests called
+ cURL. This tool is still used today but has its limitations when it comes to collaboration and sharing. "
+ 
+API calls with curl :
+ This is an example of what an API call in the terminal using the curl command looks like. Here we are fetching
+ data about GitHub user postmanlabs.
+
+$ curl https://api.github.com/users/postmanlabs
+
+It works great, but once you make the call, the API response data is lost in the river of the terminal. You also
+don't have visibility of the metadata of the response without adding more details to the command.
+
+API calls with Postman : Done with GET method we look more in before.
+
+--- The API First World ---
+Postman has a vision for an API First World - one where 100 million developers are connected through APIs, and APIs take center stage as primary building blocks. In the API-first world:
+
+-> APIs are considered a #1 priority
+-> APIs are easily consumable
+-> APIs are easily discoverable
+
+-- Tasks on Postman --
+Youtube links 
+  Task 1 : Create a workspace
+  URL : https://youtu.be/ztNIeUTqIXI
+  Task 2 : Create a collection
+  URL : https://youtu.be/Clgc8B6EpU4
+  Task 3 : Get books from the Library API
+  Library: $ GET https://library-api.postmanlabs.com/books
+  
+-- Response in Postman --
+It should look like this: a JSON (JavaScript Object Notation) response body with an array of book objects. You can
+scroll down to see more books.
+ JSON : JavaScript Object Notation
+ 
+ -- REST API --
+ This REST API allows you to CRUD (Create, Read, Update, Delete) books in a public library database. You will use
+ Postman to interact with this API and manage books. 
+ * CRUD : Create, Read, Update, Delete
+ 
+-- Request methods --
+When we make an HTTP call to a server, we specify a request method that indicates the type of operation we are
+about to perform. These are also called HTTP verbs.
+
+-- Common HTTP request methods --
+* CRUD operations :
+-------------------------------------------------------------------------------------------------------------
+| Method name |	Operation 										    |
+-------------------------------------------------------------------------------------------------------------
+| GET	      | Retrieve data (Read)									    |
+| POST	      | Send data (Create) 									    |
+| PUT/PATCH   | Update data (Update) 									    |
+| 	      | -> PUT usually replaces an entire resource, whereas PATCH usually is for partial updates    |
+| DELETE      | Delete data (Delete) 									    |
+------------------------------------------------------------------------------------------------------------
+more methods : https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
+
+=== Postman Library API v2 docs ===
+Manage books in the Postman library using this API. This API is designed to teach the basics of using APIs and
+Postman!
+This is a public API!
+Any book you add or update will be publicly visible to all users of this API. Please be respectful and follow these rules:
+- Only modify books you have added yourself
+- Understand that books in this API may be deleted at any time
+
+books
+PATH Variables: {id}
+
+GET Get a book by id
+ex: id = 29cd820f-82f9-4b45-a7f4-0924111b5b89
+$ curl --location 'https://library-api.postmanlabs.com/books/29cd820f-82f9-4b45-a7f4-0924111b5b89'
+Response:
+{
+  "id": "29cd820f-82f9-4b45-a7f4-0924111b5b89",
+  "title": "Ficciones",
+  "author": "Jorge Luis Borges",
+  "genre": "fiction",
+  "yearPublished": 1944,
+  "checkedOut": false,
+  "isPermanentCollection": true,
+  "createdAt": "2022-03-04T22:10:24.526Z"
+}
+
+PATCH Update a book by id
+$ curl --location --request PATCH 'https://library-api.postmanlabs.com/books/29cd820f-82f9-4b45-a7f4-0924111b5b89'\
+  --header 'api-key: <API Key>' \
+  --data '{
+    "checkedOut": true
+  }'
+Response: 
+{
+  "id": "29cd820f-82f9-4b45-a7f4-0924111b5b89",
+  "title": "Ficciones",
+  "author": "Jorge Luis Borges",
+  "genre": "fiction",
+  "yearPublished": 1944,
+  "checkedOut": true,
+  "isPermanentCollection": true,
+  "createdAt": "2022-03-04T22:10:24.526Z"
+}
+
+DELETE Delete a book by id
+$ curl --location --request DELETE 'https://library-api.postmanlabs.com/books/29cd820f-82f9-4b45-a7f4-0924111b5b89' \
+  --header 'api-key: <API Key>'
+Respone:
+   no response
+
+GET Get books
+Get all books, or add query parameters to filter results by PARAMS(genre, search keyword, and/or checkedOut status)
+$ curl --location 'https://library-api.postmanlabs.com/books?genre=fiction&checkedOut=false'
+Response:
+[
+  {
+    "id": "50b1a8e9-78f0-4a80-b350-8fdf8fb1b8b8",
+    "title": "A Thousand Splendid Suns",
+    "author": "Khaled Hosseini",
+    "genre": "fiction",
+    "yearPublished": 2007,
+    "checkedOut": false,
+    "isPermanentCollection": true,
+    "createdAt": "2022-03-04T22:10:24.526Z"
+  },
+  {
+    "id": "29cd820f-82f9-4b45-a7f4-0924111b5b89",
+    "title": "Ficciones",
+    "author": "Jorge Luis Borges",
+    "genre": "fiction",
+    "yearPublished": 1944,
+    "checkedOut": false,
+    "isPermanentCollection": true,
+    "createdAt": "2022-03-04T22:10:24.526Z"
+  }
+]
+
+POST Add a book
+$ curl --location 'https://library-api.postmanlabs.com/books' \
+--header 'api-key: <API Key>' \
+--data '{
+  "title": "The Four Agreements",
+  "author": "don Miguel Ruiz",
+  "genre": "self-help",
+  "yearPublished": 1997
+}'
+
+Response:
+{
+  "id": "6d63c5b9-74ed-40ff-9415-81589189f690",
+  "title": "The Four Agreements",
+  "author": "don Miguel Ruiz",
+  "genre": "self-help",
+  "yearPublished": 1997,
+  "checkedOut": false,
+  "isPermanentCollection": false,
+  "createdAt": "2022-03-17T16:09:41.950Z"
+}
+
+=== Request URL ===
+In addition to a request method, a request must include a request URL that indicates where to make the API call. 
+A request URL has three parts: a protocol (such as http:// or https://), host (location of the server), and path
+(route on the server). In REST APIs, the path often points to a reference entity, like "books".
+------------------------------------------------------------------------------
+| Protocol	|	Host			| Path			     |
+------------------------------------------------------------------------------
+| https://	| library-api.postmanlabs.com	| /books		     |
+-----------------------------------------------------------------------------
+* => "Paths and complete URLs are also sometimes called API endpoints."
+
+== Response status codes == 
+----------------------------------------------------------------------------------------------
+| Code range  |		Meaning		| 		Example
+----------------------------------------------------------------------------------------------
+| 2xx	      | Success	                | 200 - OK
+|	      |				| 201 - Created
+|	      | 			| 204 - No content (silent OK)
+|-------------|-------------------------|-----------------------------------------------------
+| 3xx	      | Redirection	        | 301 - Moved (path changed)
+|-------------|-------------------------|----------------------------------------------------
+| 4xx	      | Client error	        | 400 - Bad request
+|             |				| 401 - Unauthorized
+|	      |				| 403 - Not Permitted
+|	      | 			| 404 - Not Found
+|-------------|-------------------------|--------------------------------------------------------
+| 5xx	      | Server error	        | 500 - Internal server error
+| 	      | 			| 502 - Bad gateway
+|  	      | 			| 504 - Gateway timeout
+------------------------------------------------------------------------------------------------

@@ -26,7 +26,7 @@ console.log(students);
 
 
 /* 
-    Operator precedence
+    Operator precmentByedence
     1.paranthesis()
     2.exponents
     3.* and / and %

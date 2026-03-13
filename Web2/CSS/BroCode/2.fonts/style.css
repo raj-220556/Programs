@@ -1,0 +1,28 @@
+body{
+    background-color: black;
+}
+
+h1{
+    color: white;
+    font-family: "press start 2p","consolas";
+}
+
+p{
+    color: rgb(10, 228, 10);
+    font-family: "consolas",sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    text-decoration: cyan wavy underline; /* wavy,dotted*/
+    font-size: 20px;
+}
+
+/* 
+font-family
+    we can place more than one value if one not supports by browser then uses 
+    next style in order like 1,2,3 */
+
+/* 
+    Open souces fonts : fonts.google.com
+    coply Link add to head
+*/
+

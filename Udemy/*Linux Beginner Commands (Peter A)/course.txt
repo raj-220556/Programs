@@ -1,0 +1,140 @@
+===> Linux Basix Commands <===
+
+
+1) -- echo --
+echo "printing command"
+echo "Data into File" > file.txt   		//It overwrite's file
+echo "Append data into File" >> file.txt 	//append end of file
+
+2) -- ls (LIST) --
+ls		// List of Current directory Content
+ls -a   	// List all Files & Folders including Hidden content
+	// Hidden files are starting with ".hiddenfile.txt" & ".HiddenFolder"
+	// Changing Behaviour of command with using Parameter "-a"
+ls -l  'or' ll	//LongListing of Files (More information of files)
+ls -h -l  	//-h human readable format uses with l or s
+ls -hs		//size of Files 
+
+ls -h -s -l 'or' ls -hsl //Combination of Flags
+man ls  // Manuall page of ls
+
+
+3) -- cd (Change Directory) --
+cd folderName
+cd /path/folder
+pwd 	//Present working Directory "current folder"
+cd ~    //move to Home Folder
+cd ..   // move up folder (back folder)
+
+
+4) -- cat (Read Files) --
+cat file.txt 	// Shows file content
+
+"if cat command not avaliable use tac (reverese cat)"
+tac file.txt 	// shows file content works same as cat it doesn't have much flags
+
+-->Another file reading commands (cat command not avvaliable)
+  tac file.txt
+  head file.txt 
+     //It helps to first lines
+     -> head -n 2 file.txt //shows first 2 lines of a FILE.
+  tail file.txt
+     //Use to read from bottom lines
+     -> tail -n 2 file.txt //shows last 2 lines of a FILE.
+  xxd file.txt  //read file content & hexadecimal values of File content
+  base64 file.txt | base64 --decode
+
+5) -- find --
+"It is used to find Files or Files of Certain Type"
+
+find . -name "*.txt"     //Shows all txt files of default|current directory(pwd)
+find . -name "*.jpg"     //we search any type of files formats
+
+find . -name "*linux*"   // Shows that file contains Name "linux"
+// '*' defines that anything before and after
+
+
+6) -- grep --
+"It is used to search within The Files."
+-> Case sensitive
+grep "text" file.txt   // It Shows the 'all Lines' That containing "text".
+
+grep "text" *.txt      // Shows that all lines of all .txt files Containing "text".
+grep "text" *          //Any Files
+grep "Also Use Multiple Words" *.txt 
+
+
+7) -- sudo --
+=> Linux is a Multi User System
+=> Every linux system have Administrator It is "Root"
+$ whoami  //user
+
+$ sudo whoami 	//root
+$ ls /root  	//Permission denied
+$ sudo ls /root	//Excecuted
+
+"Password is Not there to the System anyone can Run as Administarator"
+
+8) Permissions -- chmod --
+"Premissions To Owner , Group , Others"
+"Read&Write, read only, Excecute"
+ls -l	//It shows Permissions of File on Left side
+-rw  : read&write
+-r-  : read
+-x   : Allow the file to run as a program
+
+-rw-r--r- //user,Group ,Others
+-rw-rw-rw //Everybody read&write
+
+-- chmod --
+"chmod is Useful to Change Permissions of a File"
+
+chmod +x file.txt 	//Change file permission as Excecutable For Anyone
+chmod -x file.txt	//Remove the Permission as Excecutable for anyone
+
+chmod u=rw,g=r,o=w file.txt 	// Change permissions as Required
+
+ls -l file.txt 	     // Used to Observe File Permissions
+
+
+9) -- wget --
+"wget is used to download any file From Internet"
+
+$ wget http://somewebsite.com/anyfile.zip
+//While doing It we can't do any othertasks so we can run it background by using '-b'
+
+$ wget -b http://somewebsite.com/anyfile.zip  //-b : background
+
+
+10) -- curl --
+"curl is used to Interact with Internet,with several particulars"
+particular =  Is way Data Huged on a Line (protocals like https,ftp)
+
+-https is a particular in between your computer and company computer.
+
+$ curl http://somewebsite.com	//Gets data from that Computer
+
+//If Large data we can Limit speed
+$ curl http://somewebsite.com --limit-rate 1423B
+
+//Save output
+$ curl https://website.com -o file.html
+
+$ curl http://goggle.com
+
+
+11)Archives
+
+=> Compresion Files like = .7z | .tar.gz | .zip & many other Types  are Archive files
+
+$ 7z x pictures.7z  //Extract
+$ unzip pictures.zip
+$ tar -xf pictures.tar.gz
+
+
+//Create Archives
+$ zip pictures.zip file1.txt file2.txt file3.txt
+$ zip pictures.zip *   // all files in pwd
+
+$ tar -czvf pictures.tar.gz *
+

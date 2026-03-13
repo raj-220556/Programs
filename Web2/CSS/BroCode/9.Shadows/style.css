@@ -1,0 +1,14 @@
+h2{
+    /* x-axis, y-axis, resolution, color  */
+    /* -ve number in axis goes oposite direction */
+    /* text-shadow:-5px  5px 10px grey; */
+
+    /* Fire Effect */
+
+    text-shadow: 0px 0px 5px yellow, 0px -5px 5px red;
+
+}
+
+h2:hover{
+        box-shadow: 5px 5px 5px black;
+}

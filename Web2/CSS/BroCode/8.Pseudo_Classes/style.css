@@ -1,0 +1,33 @@
+/* Bydefault Hyperlink is blue */
+
+a:link{
+    color: rgb(0, 0, 0);
+}
+
+a:visited{
+    /* Already visited links */
+    color: rgb(40, 250, 21);
+}
+
+a:hover{
+    /* Moves over them */
+    color: tomato;
+}
+
+a:active{
+    /* Hold mouse on it */
+    color:aqua;
+}
+
+button:hover{
+    background-color: orange;
+}
+
+button:active{
+    background-color: yellow;
+}
+
+li:nth-child(3n-1){
+    /* It accepts number,even,odd,formula(3n,2n,5n, 3n+2) */
+    background-color: yellowgreen;
+}

@@ -22,7 +22,7 @@ document.getElementById("box3").append(newH1);
 
 //Snadwich in btw  1&2
 // const box2 = document.getElementById("box2");
-// document.body.insertBefore(newH1, box2); //(newElement, currentElement)
+document.body.insertBefore(newH1, box2); //(newElement, currentElement)
 
 // If ELements don't have "id"
 // const boxes = document.querySelectorAll(".box");

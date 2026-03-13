@@ -1,0 +1,7 @@
+=== Setting up a Open VPN Server ===
+-> It is Free.
+
+setup VPn watch videos
+
+->Download OpenSSL (light version) 
+->Download Openvpn

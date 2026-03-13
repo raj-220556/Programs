@@ -1,0 +1,26 @@
+=== Terminal Comands ===
+
+$ passwd 	// Used TO change Password of Computer
+$ ls 		// List Of Directory
+$ pwd 		// working Directory
+$ ls -la	// Listing Hidden Directories = '.' which have name before
+$ cd <Directory>// Used to Change Directory
+$ mkdir <NewDirectory>   // Create a New Directory (Folder)
+
+
+
+// Acessing Internet
+$ firefox 	// Open firefox using these Command
+
+// adding Text into File
+$ echo "Hello!" > new.txt  //create new txt file if not existed & It is append at end of File
+
+$ locate new.txt 	// It is used to Locate a File
+
+$ cat new.txt    // Display Content of File
+
+// Finding IP Address
+$ ifconfig	// Shows IP,Mac add details of a System
+
+
+

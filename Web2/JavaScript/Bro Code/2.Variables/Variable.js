@@ -15,7 +15,7 @@
 // let price = 10.99;
 // let gpa = 2.1;  //number type
 
-// let name = "Raj";    //String type
+let name = "Raj";    //String type
 // let food = "Bonda";     // if you do not put ; we not get error
 // let email = "n220556@rguktn.ac.in"
 
@@ -25,7 +25,7 @@
 // console.log("Raj is online : ", online);
 // console.log("Raj is online :",online,"raj is not offline :",offline);
 // console.log(age,y);
-// console.log(typeof name);
+console.log(typeof name);
 // console.log(`your emai is : ${email}`);
 // console.log(`your name is ${name}`);
 // console.log(`you favouraite food is ${food}`);

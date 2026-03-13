@@ -1,0 +1,67 @@
+=== Anonymity ===
+ "Anonymity refers to Techniques and Practices that protect a user's identity, ensuring their actions can't
+   be traced back to them."
+    
+    
+-> IP Address :
+   => By Hiding or masking your real IP address to prevent tracking, surveillance, or unauthorized access.
+   => All Devices that connected to the Internet Identified By IP address.
+   => IP address are assigned by the ISP
+   
+-> Browser Cookies :
+   => "Cookies are small piece of data stored b a website on a user's browser.
+   => It is used to remember user activity, preferences, login status, and other session Information
+   => Web server providing services Cookies to Identify the Information on your System when your are acessing.
+   => So, While cookies themselves don't reveal your name,
+      They break anonymity by linking your activity across website.
+   => Using private tools is essential to stay anonymous online.
+   
+-> System Profiling :
+   => "System profiling is the process of collecting detailed information about a computer
+        system's hardware, software, network configuration and user activity"
+   => It is major threat to anonymity because it enables fingerpinting and
+       user identification without traditional tracking tools.
+   => To Stay anonymous , users must control and mask System-level data.
+   
+=== Tor Browser ===
+ "Tor Browser allows users to browse the Internet anonymously by routing their traffic through the 
+    Tor(The Onion Router) network."
+ -> It is privacy-focused web browser.
+ -> Hides your IP address by bouncing your traffic through multiple encryption nodes around the world
+ -> Allow to access blocked or Restricted websites.
+ -> Block trackers, fingerprinting scripts, and Third-party cookies by default.
+ -> Encrypts traffic multiple times to prevent surveillance.
+ -> Developed By Usa
+ 
+  ==> How It Works
+    " Tor is privacy network that anonymizes your internet activity by routing your traffic through 
+       multiple servers(nodes or relays) across the world."
+    Steps of Working:
+        => Traffic Encryption : before sent data out it encypts multiple times--each layer for a 
+            different node in the chain.
+        => Relay Hops : Your traffic is routed through 3 randomly selected nodes.
+           -> Entry Node (Guard): knows IP address, but not finall Destination.
+           -> Middle Node: passes traffic without knowing source and Destination.
+           -> Exit Node: Decrypt final layer and send data to destination site don't knows who sent It.
+        => Layered Decryption: 
+           -> Each node decrypts one layer of encryption, like peel an onion
+           -> Final node see Destination, Not a single node ever know both sender & recevier.
+           
+   
+
+   
+  ==> Why Use Tor
+	-> Maintain Online Anonymity
+	-> Protect Against Tracking
+	-> Bypass Censorship and Geo-Restrictions
+	-> Access Dark Web (.onion sites)
+	-> Secure Browsing Over Untrusted Networks
+	-> Free and Open Source
+	
+	
+  Disadvantages of TOR:
+    -> Slower speed compare to regular browsers.
+    -> It doesn't protect against malware while downloads or plugins.
+    -> It doesn't encrypt data outside of tor network. Use HTTPS websites.
+    -> Some sites block tor traffic.
+	

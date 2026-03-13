@@ -1,0 +1,6 @@
+--2025-04-05 13:56:09--  https://traboda-arena-pentathon-2025.s3.amazonaws.com/files/attachments/handout_e1a34246-e47e-4327-8225-6db6571f44a2.tar.xz?X-Amz-Algorithm=AWS4-HMAC-SHA256
+Resolving traboda-arena-pentathon-2025.s3.amazonaws.com (traboda-arena-pentathon-2025.s3.amazonaws.com)... 52.219.156.199, 16.12.36.139, 52.219.160.155, ...
+Connecting to traboda-arena-pentathon-2025.s3.amazonaws.com (traboda-arena-pentathon-2025.s3.amazonaws.com)|52.219.156.199|:443... connected.
+HTTP request sent, awaiting response... 400 Bad Request
+2025-04-05 13:56:11 ERROR 400: Bad Request.
+

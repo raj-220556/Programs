@@ -1,0 +1,38 @@
+#box{
+    border: 2px solid;
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+    text-align: center;
+    background-color: orange;
+
+    /* translate moves element either X or Y */
+    /* transform: translateX(50px); */
+    /* transform: translateY(50px); */
+    /* For combine both */
+    /* transform: translate(50px, 50px); */
+
+    /* Rotating a ELement */
+    transform: rotateX(180deg);
+    transform: rotateY(180deg);
+    transform: rotateZ(180deg);
+
+    /* Scaling the Element */
+    /* 1 = 100%, 2 = 200% */
+    /* transform: scaleX(2); */
+    /* transform: scaleY(2); */
+    /* combine */
+    /* transform: scale(2, 2); */
+
+    /* Bending of an element */
+    transform: skewX(45deg);
+    transform: skewY(45deg);
+
+    transform: skew(50deg, 30deg);
+
+
+    /* Matrix :6 values to pass */
+    /* scale x skew x,y scale y, transulate x, y */
+    transform: matrix(1,40deg,30deg,1,1,1);
+
+}
