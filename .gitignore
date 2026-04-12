@@ -1,0 +1,40 @@
+.ipynb_checkpoints
+.vscode/
+*vscode*
+__pycache__
+node_modules
+.env
+
+# --- Jupyter Notebooks ---
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+# Checkpoints for individual cells
+.virtual_documents/
+
+# --- System & Editors ---
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# --- Python & Data Science ---
+__pycache__/
+*$py.class
+.env
+.venv
+env/
+venv/
+bin/
+lib/
+develop-eggs/
+dist/
+eggs/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg

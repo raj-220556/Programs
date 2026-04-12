@@ -1,0 +1,4 @@
+
+# Jupiter files
+.ipynb_checkpoints/
+*.code-workspace
