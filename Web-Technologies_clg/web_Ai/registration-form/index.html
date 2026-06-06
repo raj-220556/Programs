@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Registration Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: 174 100% 50%;
+      --primary-glow: 174 100% 70%;
+      --secondary: 280 100% 60%;
+      --background: 220 20% 8%;
+      --surface: 220 15% 12%;
+      --surface-light: 220 15% 18%;
+      --text: 0 0% 95%;
+      --text-muted: 220 10% 60%;
+      --border: 220 15% 25%;
+      --error: 0 80% 60%;
+      --success: 145 80% 45%;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: hsl(var(--background));
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Background Effects */
+    .bg-gradient {
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at 20% 20%, hsla(var(--primary), 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, hsla(var(--secondary), 0.1) 0%, transparent 50%),
+        hsl(var(--background));
+      z-index: -2;
+    }
+
+    .gradient-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      animation: float 8s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      background: hsla(var(--primary), 0.3);
+      top: -100px;
+      left: -100px;
+    }
+
+    .orb-2 {
+      width: 300px;
+      height: 300px;
+      background: hsla(var(--secondary), 0.3);
+      bottom: -50px;
+      right: -50px;
+      animation-delay: -4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-30px) scale(1.05); }
+    }
+
+    /* Floating Particles */
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: hsla(var(--primary), 0.6);
+      border-radius: 50%;
+      animation: particle-float 15s linear infinite;
+    }
+
+    @keyframes particle-float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% {
+        transform: translateY(-100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* Form Container */
+    .form-container {
+      width: 100%;
+      max-width: 600px;
+      background: hsla(var(--surface), 0.6);
+      backdrop-filter: blur(20px);
+      border: 1px solid hsla(var(--border), 0.5);
+      border-radius: 24px;
+      padding: 3rem;
+      box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 hsla(var(--primary-glow), 0.1);
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .form-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-subtitle {
+      color: hsl(var(--text-muted));
+      font-size: 1rem;
+    }
+
+    /* Progress Steps */
+    .progress-steps {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .step-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: all 0.3s ease;
+      border: 2px solid hsl(var(--border));
+      color: hsl(var(--text-muted));
+      background: transparent;
+    }
+
+    .step.active .step-number {
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+      border-color: transparent;
+      color: hsl(var(--background));
+      box-shadow: 0 0 20px hsla(var(--primary), 0.5);
+    }
+
+    .step.completed .step-number {
+      background: hsl(var(--success));
+      border-color: transparent;
+      color: white;
+    }
+
+    .step-label {
+      font-size: 0.875rem;
+      color: hsl(var(--text-muted));
+      display: none;
+    }
+
+    @media (min-width: 640px) {
+      .step-label { display: block; }
+    }
+
+    .step.active .step-label {
+      color: hsl(var(--primary));
+    }
+
+    .step-connector {
+      width: 40px;
+      height: 2px;
+      background: hsl(var(--border));
+      transition: background 0.3s ease;
+    }
+
+    .step-connector.active {
+      background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    }
+
+    /* Form Steps */
+    .form-step {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .form-step.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Form Groups */
+    .form-row {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .form-row.two-col {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      color: hsl(var(--text));
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .form-label .required {
+      color: hsl(var(--error));
+      margin-left: 2px;
+    }
+
+    /* Input Styles */
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: hsl(var(--text-muted));
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      padding-left: 3rem;
+      background: hsla(var(--surface-light), 0.5);
+      border: 1px solid hsl(var(--border));
+      border-radius: 12px;
+      color: hsl(var(--text));
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: hsl(var(--primary));
+      box-shadow: 
+        0 0 0 3px hsla(var(--primary), 0.2),
+        0 0 20px hsla(var(--primary), 0.1);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: hsl(var(--text-muted));
+    }
+
+    .form-select {
+      appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 20px;
+    }
+
+    .form-select option {
+      background: hsl(var(--surface));
+      color: hsl(var(--text));
+    }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+      padding-left: 1rem;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: hsl(var(--text-muted));
+      cursor: pointer;
+      padding: 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s ease;
+    }
+
+    .password-toggle:hover {
+      color: hsl(var(--primary));
+    }
+
+    /* Radio & Checkbox Styles */
+    .radio-group,
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .radio-option,
+    .checkbox-option {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      background: hsla(var(--surface-light), 0.5);
+      border: 1px solid hsl(var(--border));
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      flex: 1;
+      min-width: 140px;
+    }
+
+    .radio-option:hover,
+    .checkbox-option:hover {
+      border-color: hsla(var(--primary), 0.5);
+    }
+
+    .radio-option.selected,
+    .checkbox-option.selected {
+      border-color: hsl(var(--primary));
+      background: hsla(var(--primary), 0.1);
+    }
+
+    .radio-option input,
+    .checkbox-option input {
+      display: none;
+    }
+
+    .radio-indicator {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid hsl(var(--border));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .radio-option.selected .radio-indicator {
+      border-color: hsl(var(--primary));
+    }
+
+    .radio-indicator::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: hsl(var(--primary));
+      transform: scale(0);
+      transition: transform 0.2s ease;
+    }
+
+    .radio-option.selected .radio-indicator::after {
+      transform: scale(1);
+    }
+
+    .checkbox-indicator {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 2px solid hsl(var(--border));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .checkbox-option.selected .checkbox-indicator {
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+      border-color: transparent;
+    }
+
+    .checkbox-indicator svg {
+      width: 14px;
+      height: 14px;
+      stroke: hsl(var(--background));
+      stroke-width: 3;
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.2s ease;
+    }
+
+    .checkbox-option.selected .checkbox-indicator svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .option-label {
+      color: hsl(var(--text));
+      font-size: 0.9rem;
+    }
+
+    /* Switch Styles */
+    .switch-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      background: hsla(var(--surface-light), 0.5);
+      border: 1px solid hsl(var(--border));
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .switch-info {
+      flex: 1;
+    }
+
+    .switch-label {
+      color: hsl(var(--text));
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .switch-description {
+      color: hsl(var(--text-muted));
+      font-size: 0.8rem;
+    }
+
+    .switch {
+      position: relative;
+      width: 52px;
+      height: 28px;
+      background: hsl(var(--border));
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .switch.active {
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+      box-shadow: 0 0 15px hsla(var(--primary), 0.4);
+    }
+
+    .switch-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 22px;
+      height: 22px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .switch.active .switch-thumb {
+      transform: translateX(24px);
+    }
+
+    /* Slider Styles */
+    .slider-wrapper {
+      padding: 1rem 0;
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .slider-value {
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+      font-size: 1.25rem;
+    }
+
+    .slider {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: hsl(var(--border));
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+      cursor: pointer;
+      box-shadow: 0 0 15px hsla(var(--primary), 0.5);
+      transition: transform 0.2s ease;
+    }
+
+    .slider::-webkit-slider-thumb:hover {
+      transform: scale(1.1);
+    }
+
+    .slider::-moz-range-thumb {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 0 15px hsla(var(--primary), 0.5);
+    }
+
+    /* File Upload */
+    .file-upload {
+      border: 2px dashed hsl(var(--border));
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: hsla(var(--surface-light), 0.3);
+    }
+
+    .file-upload:hover,
+    .file-upload.dragover {
+      border-color: hsl(var(--primary));
+      background: hsla(var(--primary), 0.05);
+    }
+
+    .file-upload input {
+      display: none;
+    }
+
+    .file-upload-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 1rem;
+      color: hsl(var(--primary));
+    }
+
+    .file-upload-text {
+      color: hsl(var(--text));
+      margin-bottom: 0.5rem;
+    }
+
+    .file-upload-hint {
+      color: hsl(var(--text-muted));
+      font-size: 0.8rem;
+    }
+
+    .file-preview {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: hsla(var(--surface), 0.5);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .file-preview img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .file-preview-info {
+      flex: 1;
+      text-align: left;
+    }
+
+    .file-preview-name {
+      color: hsl(var(--text));
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .file-preview-size {
+      color: hsl(var(--text-muted));
+      font-size: 0.8rem;
+    }
+
+    /* Buttons */
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid hsl(var(--border));
+      color: hsl(var(--text));
+    }
+
+    .btn-secondary:hover {
+      background: hsla(var(--surface-light), 0.5);
+      border-color: hsl(var(--text-muted));
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+      border: none;
+      color: hsl(var(--background));
+      box-shadow: 0 4px 20px hsla(var(--primary), 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px hsla(var(--primary), 0.5);
+    }
+
+    .btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Review Section */
+    .review-section {
+      background: hsla(var(--surface-light), 0.5);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .review-title {
+      color: hsl(var(--primary));
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .review-grid {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .review-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid hsla(var(--border), 0.5);
+    }
+
+    .review-item:last-child {
+      border-bottom: none;
+    }
+
+    .review-label {
+      color: hsl(var(--text-muted));
+      font-size: 0.9rem;
+    }
+
+    .review-value {
+      color: hsl(var(--text));
+      font-weight: 500;
+    }
+
+    /* Success State */
+    .success-message {
+      text-align: center;
+      padding: 3rem;
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, hsl(var(--success)), hsl(145 80% 55%));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: success-pop 0.5s ease;
+    }
+
+    @keyframes success-pop {
+      0% { transform: scale(0); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .success-icon svg {
+      width: 40px;
+      height: 40px;
+      stroke: white;
+      stroke-width: 3;
+    }
+
+    .success-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: hsl(var(--text));
+      margin-bottom: 0.5rem;
+    }
+
+    .success-text {
+      color: hsl(var(--text-muted));
+    }
+
+    /* Error Message */
+    .error-message {
+      color: hsl(var(--error));
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .form-container {
+        padding: 1.5rem;
+      }
+
+      .form-title {
+        font-size: 1.75rem;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="gradient-orb orb-1"></div>
+  <div class="gradient-orb orb-2"></div>
+  <div class="particles" id="particles"></div>
+
+  <div class="form-container">
+    <div class="form-header">
+      <h1 class="form-title">Create Account</h1>
+      <p class="form-subtitle">Join us and start your journey today</p>
+    </div>
+
+    <!-- Progress Steps -->
+    <div class="progress-steps">
+      <div class="step active" data-step="1">
+        <div class="step-number">1</div>
+        <span class="step-label">Personal</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step" data-step="2">
+        <div class="step-number">2</div>
+        <span class="step-label">Contact</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step" data-step="3">
+        <div class="step-number">3</div>
+        <span class="step-label">Preferences</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step" data-step="4">
+        <div class="step-number">4</div>
+        <span class="step-label">Review</span>
+      </div>
+    </div>
+
+    <form id="registrationForm">
+      <!-- Step 1: Personal Information -->
+      <div class="form-step active" data-step="1">
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label class="form-label">First Name <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              <input type="text" class="form-input" name="firstName" placeholder="John" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              <input type="text" class="form-input" name="lastName" placeholder="Doe" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email Address <span class="required">*</span></label>
+          <div class="input-wrapper">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="20" height="16" x="2" y="4" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+            <input type="email" class="form-input" name="email" placeholder="john@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label class="form-label">Password <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <input type="password" class="form-input" name="password" placeholder="••••••••" required>
+              <button type="button" class="password-toggle" data-target="password">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Confirm Password <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <input type="password" class="form-input" name="confirmPassword" placeholder="••••••••" required>
+              <button type="button" class="password-toggle" data-target="confirmPassword">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Date of Birth</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+              <line x1="16" x2="16" y1="2" y2="6"/>
+              <line x1="8" x2="8" y1="2" y2="6"/>
+              <line x1="3" x2="21" y1="10" y2="10"/>
+            </svg>
+            <input type="date" class="form-input" name="dateOfBirth">
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button type="button" class="btn btn-primary" onclick="nextStep()">
+            Continue
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Contact Information -->
+      <div class="form-step" data-step="2">
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <input type="tel" class="form-input" name="phone" placeholder="+1 (555) 000-0000">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Address</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <input type="text" class="form-input" name="address" placeholder="123 Main Street">
+          </div>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label class="form-label">City</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 21h18"/>
+                <path d="M5 21V7l8-4v18"/>
+                <path d="M19 21V11l-6-4"/>
+                <path d="M9 9v.01"/>
+                <path d="M9 12v.01"/>
+                <path d="M9 15v.01"/>
+                <path d="M9 18v.01"/>
+              </svg>
+              <input type="text" class="form-input" name="city" placeholder="New York">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Country</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" x2="22" y1="12" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+              <select class="form-select" name="country">
+                <option value="">Select Country</option>
+                <option value="us">United States</option>
+                <option value="uk">United Kingdom</option>
+                <option value="ca">Canada</option>
+                <option value="au">Australia</option>
+                <option value="de">Germany</option>
+                <option value="fr">France</option>
+                <option value="jp">Japan</option>
+                <option value="in">India</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Bio</label>
+          <textarea class="form-textarea" name="bio" placeholder="Tell us about yourself..."></textarea>
+        </div>
+
+        <div class="button-group">
+          <button type="button" class="btn btn-secondary" onclick="prevStep()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m12 19-7-7 7-7"/>
+              <path d="M19 12H5"/>
+            </svg>
+            Back
+          </button>
+          <button type="button" class="btn btn-primary" onclick="nextStep()">
+            Continue
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3: Preferences -->
+      <div class="form-step" data-step="3">
+        <div class="form-group">
+          <label class="form-label">Account Type <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option selected">
+              <input type="radio" name="accountType" value="personal" checked>
+              <span class="radio-indicator"></span>
+              <span class="option-label">Personal</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="accountType" value="business">
+              <span class="radio-indicator"></span>
+              <span class="option-label">Business</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="accountType" value="enterprise">
+              <span class="radio-indicator"></span>
+              <span class="option-label">Enterprise</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Interests</label>
+          <div class="checkbox-group">
+            <label class="checkbox-option">
+              <input type="checkbox" name="interests" value="technology">
+              <span class="checkbox-indicator">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </span>
+              <span class="option-label">Technology</span>
+            </label>
+            <label class="checkbox-option">
+              <input type="checkbox" name="interests" value="design">
+              <span class="checkbox-indicator">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </span>
+              <span class="option-label">Design</span>
+            </label>
+            <label class="checkbox-option">
+              <input type="checkbox" name="interests" value="marketing">
+              <span class="checkbox-indicator">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </span>
+              <span class="option-label">Marketing</span>
+            </label>
+            <label class="checkbox-option">
+              <input type="checkbox" name="interests" value="finance">
+              <span class="checkbox-indicator">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </span>
+              <span class="option-label">Finance</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Experience Level</label>
+          <div class="slider-wrapper">
+            <div class="slider-header">
+              <span class="form-label" style="margin-bottom: 0;">Years of Experience</span>
+              <span class="slider-value" id="experienceValue">5 years</span>
+            </div>
+            <input type="range" class="slider" name="experience" min="0" max="20" value="5" oninput="updateSlider(this)">
+          </div>
+        </div>
+
+        <div class="switch-wrapper">
+          <div class="switch-info">
+            <div class="switch-label">Email Notifications</div>
+            <div class="switch-description">Receive updates about new features and tips</div>
+          </div>
+          <div class="switch active" onclick="toggleSwitch(this)" data-name="emailNotifications"></div>
+        </div>
+
+        <div class="switch-wrapper">
+          <div class="switch-info">
+            <div class="switch-label">Two-Factor Authentication</div>
+            <div class="switch-description">Add an extra layer of security to your account</div>
+          </div>
+          <div class="switch" onclick="toggleSwitch(this)" data-name="twoFactor"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Profile Picture</label>
+          <div class="file-upload" id="fileUpload">
+            <input type="file" name="avatar" accept="image/*" onchange="handleFileUpload(this)">
+            <svg class="file-upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" x2="12" y1="3" y2="15"/>
+            </svg>
+            <div class="file-upload-text">Click to upload or drag and drop</div>
+            <div class="file-upload-hint">PNG, JPG or GIF (max. 5MB)</div>
+            <div class="file-preview" id="filePreview" style="display: none;">
+              <img id="previewImage" src="" alt="Preview">
+              <div class="file-preview-info">
+                <div class="file-preview-name" id="fileName"></div>
+                <div class="file-preview-size" id="fileSize"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button type="button" class="btn btn-secondary" onclick="prevStep()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m12 19-7-7 7-7"/>
+              <path d="M19 12H5"/>
+            </svg>
+            Back
+          </button>
+          <button type="button" class="btn btn-primary" onclick="nextStep()">
+            Continue
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 4: Review -->
+      <div class="form-step" data-step="4">
+        <div class="review-section">
+          <h3 class="review-title">Personal Information</h3>
+          <div class="review-grid">
+            <div class="review-item">
+              <span class="review-label">Full Name</span>
+              <span class="review-value" id="reviewName">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Email</span>
+              <span class="review-value" id="reviewEmail">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Date of Birth</span>
+              <span class="review-value" id="reviewDob">-</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-section">
+          <h3 class="review-title">Contact Information</h3>
+          <div class="review-grid">
+            <div class="review-item">
+              <span class="review-label">Phone</span>
+              <span class="review-value" id="reviewPhone">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Address</span>
+              <span class="review-value" id="reviewAddress">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Country</span>
+              <span class="review-value" id="reviewCountry">-</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-section">
+          <h3 class="review-title">Preferences</h3>
+          <div class="review-grid">
+            <div class="review-item">
+              <span class="review-label">Account Type</span>
+              <span class="review-value" id="reviewAccountType">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Experience</span>
+              <span class="review-value" id="reviewExperience">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Notifications</span>
+              <span class="review-value" id="reviewNotifications">-</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="switch-wrapper">
+          <div class="switch-info">
+            <div class="switch-label">I agree to the Terms of Service</div>
+            <div class="switch-description">By creating an account, you agree to our terms and privacy policy</div>
+          </div>
+          <div class="switch" onclick="toggleSwitch(this)" data-name="terms"></div>
+        </div>
+
+        <div class="button-group">
+          <button type="button" class="btn btn-secondary" onclick="prevStep()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m12 19-7-7 7-7"/>
+              <path d="M19 12H5"/>
+            </svg>
+            Back
+          </button>
+          <button type="submit" class="btn btn-primary">
+            Create Account
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Success Message -->
+      <div class="form-step" data-step="5">
+        <div class="success-message">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <h2 class="success-title">Registration Complete!</h2>
+          <p class="success-text">Welcome aboard! Your account has been created successfully.</p>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Create floating particles
+    function createParticles() {
+      const container = document.getElementById('particles');
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+        container.appendChild(particle);
+      }
+    }
+    createParticles();
+
+    // Form state
+    let currentStep = 1;
+    const totalSteps = 4;
+    const formData = {};
+
+    // Step navigation
+    function updateSteps() {
+      // Update step indicators
+      document.querySelectorAll('.step').forEach((step, index) => {
+        const stepNum = index + 1;
+        step.classList.remove('active', 'completed');
+        if (stepNum === currentStep) {
+          step.classList.add('active');
+        } else if (stepNum < currentStep) {
+          step.classList.add('completed');
+        }
+      });
+
+      // Update connectors
+      document.querySelectorAll('.step-connector').forEach((connector, index) => {
+        connector.classList.toggle('active', index < currentStep - 1);
+      });
+
+      // Update form steps
+      document.querySelectorAll('.form-step').forEach(step => {
+        step.classList.remove('active');
+      });
+      document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.add('active');
+
+      // Update review data on step 4
+      if (currentStep === 4) {
+        updateReviewData();
+      }
+    }
+
+    function nextStep() {
+      if (currentStep < totalSteps) {
+        collectFormData();
+        currentStep++;
+        updateSteps();
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        updateSteps();
+      }
+    }
+
+    function collectFormData() {
+      const form = document.getElementById('registrationForm');
+      const inputs = form.querySelectorAll('input, select, textarea');
+      inputs.forEach(input => {
+        if (input.type === 'checkbox') {
+          if (!formData[input.name]) formData[input.name] = [];
+          if (input.checked) {
+            formData[input.name].push(input.value);
+          }
+        } else if (input.type === 'radio') {
+          if (input.checked) {
+            formData[input.name] = input.value;
+          }
+        } else if (input.type !== 'file') {
+          formData[input.name] = input.value;
+        }
+      });
+
+      // Collect switch states
+      document.querySelectorAll('.switch').forEach(sw => {
+        formData[sw.dataset.name] = sw.classList.contains('active');
+      });
+    }
+
+    function updateReviewData() {
+      collectFormData();
+      document.getElementById('reviewName').textContent = 
+        `${formData.firstName || ''} ${formData.lastName || ''}`.trim() || '-';
+      document.getElementById('reviewEmail').textContent = formData.email || '-';
+      document.getElementById('reviewDob').textContent = formData.dateOfBirth || '-';
+      document.getElementById('reviewPhone').textContent = formData.phone || '-';
+      document.getElementById('reviewAddress').textContent = 
+        `${formData.address || ''}, ${formData.city || ''}`.replace(/^, |, $/g, '') || '-';
+      
+      const countrySelect = document.querySelector('select[name="country"]');
+      const selectedCountry = countrySelect.options[countrySelect.selectedIndex];
+      document.getElementById('reviewCountry').textContent = 
+        selectedCountry.value ? selectedCountry.text : '-';
+      
+      document.getElementById('reviewAccountType').textContent = 
+        formData.accountType ? formData.accountType.charAt(0).toUpperCase() + formData.accountType.slice(1) : '-';
+      document.getElementById('reviewExperience').textContent = 
+        formData.experience ? `${formData.experience} years` : '-';
+      document.getElementById('reviewNotifications').textContent = 
+        formData.emailNotifications ? 'Enabled' : 'Disabled';
+    }
+
+    // Password toggle
+    document.querySelectorAll('.password-toggle').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const input = this.parentElement.querySelector('input');
+        const type = input.type === 'password' ? 'text' : 'password';
+        input.type = type;
+        
+        // Update icon
+        const eyeOpen = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>`;
+        const eyeClosed = `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>`;
+        
+        this.querySelector('svg').innerHTML = type === 'password' ? eyeOpen : eyeClosed;
+      });
+    });
+
+    // Radio buttons
+    document.querySelectorAll('.radio-option').forEach(option => {
+      option.addEventListener('click', function() {
+        const name = this.querySelector('input').name;
+        document.querySelectorAll(`.radio-option input[name="${name}"]`).forEach(input => {
+          input.closest('.radio-option').classList.remove('selected');
+        });
+        this.classList.add('selected');
+        this.querySelector('input').checked = true;
+      });
+    });
+
+    // Checkboxes
+    document.querySelectorAll('.checkbox-option').forEach(option => {
+      option.addEventListener('click', function(e) {
+        e.preventDefault();
+        const input = this.querySelector('input');
+        input.checked = !input.checked;
+        this.classList.toggle('selected', input.checked);
+      });
+    });
+
+    // Switch toggle
+    function toggleSwitch(element) {
+      element.classList.toggle('active');
+    }
+
+    // Slider update
+    function updateSlider(slider) {
+      document.getElementById('experienceValue').textContent = `${slider.value} years`;
+    }
+
+    // File upload
+    const fileUpload = document.getElementById('fileUpload');
+    
+    fileUpload.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      fileUpload.classList.add('dragover');
+    });
+
+    fileUpload.addEventListener('dragleave', () => {
+      fileUpload.classList.remove('dragover');
+    });
+
+    fileUpload.addEventListener('drop', (e) => {
+      e.preventDefault();
+      fileUpload.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file) displayFile(file);
+    });
+
+    fileUpload.addEventListener('click', () => {
+      fileUpload.querySelector('input').click();
+    });
+
+    function handleFileUpload(input) {
+      if (input.files[0]) {
+        displayFile(input.files[0]);
+      }
+    }
+
+    function displayFile(file) {
+      const preview = document.getElementById('filePreview');
+      const image = document.getElementById('previewImage');
+      const name = document.getElementById('fileName');
+      const size = document.getElementById('fileSize');
+
+      if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          image.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      name.textContent = file.name;
+      size.textContent = formatFileSize(file.size);
+      preview.style.display = 'flex';
+    }
+
+    function formatFileSize(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    }
+
+    // Form submission
+    document.getElementById('registrationForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      collectFormData();
+      
+      // Check terms agreement
+      if (!formData.terms) {
+        alert('Please agree to the Terms of Service');
+        return;
+      }
+
+      console.log('Form Data:', formData);
+      
+      // Show success
+      currentStep = 5;
+      document.querySelectorAll('.form-step').forEach(step => {
+        step.classList.remove('active');
+      });
+      document.querySelector('.form-step[data-step="5"]').classList.add('active');
+      
+      // Mark all steps as completed
+      document.querySelectorAll('.step').forEach(step => {
+        step.classList.remove('active');
+        step.classList.add('completed');
+      });
+      document.querySelectorAll('.step-connector').forEach(connector => {
+        connector.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

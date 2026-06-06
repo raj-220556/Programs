@@ -1,0 +1,231 @@
+/* --- Global Reset & Variables --- */
+:root {
+    --primary-color: #2563eb;
+    --dark-bg: #0f172a;
+    --text-main: #334155;
+    --text-light: #64748b;
+    --white: #ffffff;
+    --border-color: #e2e8f0;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* --- Navigation Header --- */
+header {
+    background: var(--white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 5%;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-left .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 10px;
+}
+
+.nav-left img {
+    height: 40px;
+    width: auto;
+}
+
+#brand-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--dark-bg);
+    letter-spacing: -1px;
+}
+
+/* Search Bar */
+.search-container {
+    display: flex;
+    background: #f1f5f9;
+    border-radius: 50px;
+    padding: 5px 15px;
+    width: 300px;
+}
+
+.search-container input {
+    border: none;
+    background: transparent;
+    padding: 8px;
+    width: 100%;
+    outline: none;
+}
+
+.search-container button {
+    border: none;
+    background: transparent;
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+/* Nav Links */
+.nav-right a {
+    text-decoration: none;
+    color: var(--text-main);
+    margin-left: 20px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-right a:hover {
+    color: var(--primary-color);
+}
+
+.btn-signup {
+    background: var(--primary-color);
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 6px;
+}
+
+/* Sub-navigation (Horizontal Scroll) */
+#subnav {
+    background: #fdfdfd;
+    padding: 10px 5%;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#subnav a {
+    text-decoration: none;
+    color: var(--text-light);
+    margin-right: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+#subnav a:hover, .active-task {
+    color: var(--primary-color) !important;
+    font-weight: 700;
+}
+
+/* --- Main Content Layout --- */
+#content {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.hero-section {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+h1 { font-size: 2.5rem; color: var(--dark-bg); }
+.subtitle { color: var(--text-light); font-size: 1.1rem; }
+
+/* Table Styling */
+.table-container {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th {
+    background: #f8fafc;
+    text-align: left;
+    padding: 15px;
+    border-bottom: 2px solid var(--border-color);
+    color: var(--dark-bg);
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+tr:hover { background: #f1f5f9; }
+
+/* Media Grid (Video & Audio) */
+.media-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.media-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+video, audio {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+/* Iframe / Website Grid */
+.iframe-wrapper iframe {
+    width: 100%;
+    height: 500px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+#websites-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    height: 400px;
+}
+
+#websites-grid iframe {
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px;
+    background: var(--dark-bg);
+    color: white;
+    margin-top: 60px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .media-grid, #websites-grid, .nav-center {
+        grid-template-columns: 1fr;
+        display: none; /* Hide search on mobile or reposition it */
+    }
+    .nav-right a { margin-left: 10px; font-size: 0.8rem; }
+}

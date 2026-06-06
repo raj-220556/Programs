@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="task7.css">
+</head>
+<body>
+    <div class="headder">
+        <h1>Student Registration Form</h1>
+        <p id = "greeting"></p>
+    </div>
+    
+    <div class="form">
+        
+            <lable>Id Number: </lable>
+            <input type = "text" id="id" placeholder="N*****" required>
+            <br>
+            <label>Name :</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+            <br>
+            <label>Gender :</label><br>
+            <input type="radio" id="malebtn" name="gender">
+            <lable for = "malebtn">male</lable>
+            <input type="radio" id="femalebtn" name="gender">
+            <label for="femalebtn">female</label>
+            <br>
+            <label>Branch :</label>
+            <options>
+                <select id="branch" required>
+                    <option value="CSE">CSE</option>
+                    <option value="ECE">ECE</option>
+                    <option value="MECH">MECH</option>
+                    <option value="CIVIL">CIVIL</option>
+                </select>
+            </options>
+            <br>
+            <p id="error"></p>
+            <button id="btn" onclick="submitDetails()">Submit</button>
+            <button id="printbtn" onclick="windowprint()">Print this page </button>
+        
+    </div>
+    <form>
+
+    </form>
+    
+    <script src="task7.js"></script>
+</body>
+</html>

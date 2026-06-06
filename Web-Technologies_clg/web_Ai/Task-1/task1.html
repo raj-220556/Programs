@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SudoSchool | Learning Reimagined</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav id="main-nav">
+            <div class="nav-left">
+                <a href="/index.html" class="logo">
+                    <img src="/images/logo.png" alt="SudoSchool Logo">
+                    <span id="brand-name">SudoSchool</span>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <div class="search-container">
+                    <input type="search" placeholder="Search courses...">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <a href="/pages/about.html">About</a>
+                <a href="/index.html">Courses</a>
+                <a href="/pages/teachers.html">Teachers</a>
+                <a href="/index.html">Contact</a>
+                <a href="/index.html" class="btn-signup">Sign Up</a>
+            </div>      
+        </nav>
+
+        <nav id="subnav">
+            <div class="scroll-container">
+                <a href="/Courses/html.html">HTML</a>
+                <a href="/Courses/css.html">CSS</a>
+                <a href="/Courses/php.html">PHP</a>
+                <a href="/Courses/git.html">Git</a>
+                <a href="/Courses/js.html">JavaScript</a>
+                <a href="/Tasks/Task1_html/task1.html" class="active-task">Task 1</a>
+                </div>
+        </nav>
+    </header>
+
+    <main id="content">
+        <section class="hero-section">
+            <h1>Task 1: Course Overview</h1>
+            <p class="subtitle">Explore our curriculum and learning resources.</p>
+        </section>
+
+        <section class="table-container">
+            <h3>Course Details</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Duration</th>
+                        <th>Investment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HTML5 Mastery</td>
+                        <td>3 Months</td>
+                        <td>100/-</td>
+                    </tr>
+                    <tr>
+                        <td>Modern CSS</td>
+                        <td>2 Months</td>
+                        <td>80/-</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript ES6+</td>
+                        <td>4 Months</td>
+                        <td>120/-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="media-grid">
+            <div class="media-card">
+                <h2>Video Demo</h2>
+                <video controls muted poster="/images/video-placeholder.jpg">
+                    <source src="/Tasks/Task1_html/resources/videoplayback.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div class="media-card">
+                <h2>Audio Samples</h2>
+                <audio controls>
+                    <source src="/Tasks/Task1_html/resources/iphone-remix-68028.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </section>
+
+        <section class="resource-section">
+            <h2>Course Curriculum (PDF)</h2>
+            <div class="iframe-wrapper">
+                <iframe src="/Tasks/Task1_html/resources/WT Lab Task 1.pdf#toolbar=0"></iframe>
+            </div>
+        </section>
+       
+        <section class="external-links">
+            <h2>Fellow Learner Ecosystem</h2>
+            <div id="websites-grid">
+                <iframe src="https://www.wikipedia.org/" title="Wikipedia"></iframe>
+                <iframe src="https://bfcm.shopify.com/" title="Shopify"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SudoSchool. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

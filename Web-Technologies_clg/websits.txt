@@ -1,0 +1,31 @@
+https://gchq.github.io/CyberChef/
+https://www.shodan.io/  103.225.13.252
+https://web.archive.org/
+https://dnsdumpster.com/
+https://builtwith.com  (It Contains Analatics of BootStrap)  ()
+https://whois.domaintools.com/
+https://www.virustotal.com/  ()
+
+https://whatismyipaddress.com/
+https://dnsleaktest.com/
+
+--- Good Stuff ------
+https://godbolt.org/   (It contains JavaScript DropDown Class search:Bootstrap)
+https://dogbolt.org
+https://www.postman.com/  ()
+https://www.wireshark.org/
+
+https://overthewire.org/wargames/ (Used JQuery)
+
+
+---- BootStrap -----
+https://attack.mitre.org/
+https://www.exploit-db.com/  (Google-DB)
+https://ctftime.org/  
+https://dokumen.pub/	(UseFull For Download Any Ebook Freely)
+http://www.ernet.in/  (It Written Bootstrap in Style tag)
+https://www.bugcrowd.com/  (Used Bootstrap JS)
+
+--- Portfolio -------
+https://ysap.sh/  (curl it)
+

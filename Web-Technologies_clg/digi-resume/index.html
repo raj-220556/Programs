@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Digital Resume</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .hero-section { padding: 100px 0; background: #f8f9fa; }
+        .section-padding { padding: 60px 0; }
+        .carousel-item img { height: 400px; object-fit: cover; }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarNav">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="bi bi-person-badge me-2"></i>MyPortfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Work</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#projects">Projects</a></li>
+                            <li><a class="dropdown-item" href="#gallery">Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6 order-md-1">
+                    <h1 class="display-4 fw-bold">Hi, I'm a Developer</h1>
+                    <p class="lead">Building responsive digital experiences with Bootstrap 5.</p>
+                    <div class="alert alert-info d-none d-md-block">Welcome to my professional space!</div>
+                    <button class="btn btn-primary btn-lg" id="jq-hero-btn"><i class="bi bi-rocket-takeoff me-2"></i>Hire Me</button>
+                </div>
+                <div class="col-12 col-md-6 order-md-2 mt-4 mt-md-0 text-center">
+                    <img src="https://via.placeholder.com/400" class="img-fluid rounded-circle shadow" alt="Profile">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="section-padding container">
+        <h2 class="text-center mb-5">About & Skills</h2>
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <h3>My Journey</h3>
+                <p>I specialize in front-end architecture and responsive design.</p>
+                <div class="list-group">
+                    <label class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" value="" checked>
+                        UI/UX Design Enthusiast
+                    </label>
+                    <label class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" value="" checked>
+                        Open Source Contributor
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h5>HTML5 <span class="badge bg-success">Expert</span></h5>
+                <div class="progress mb-3">
+                    <div class="progress-bar" role="progressbar" style="width: 90%">90%</div>
+                </div>
+                <h5>Bootstrap <span class="badge bg-primary">Advanced</span></h5>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 85%">85%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Featured Projects</h2>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4 offset-lg-0">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://via.placeholder.com/300" class="card-img-top img-thumbnail" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Project Alpha</h5>
+                            <p class="card-text">A responsive web application built with GSAP and Bootstrap.</p>
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-8">
+                    <div class="row g-2">
+                        <div class="col-6"><div class="p-3 border bg-white">Sub-Module A</div></div>
+                        <div class="col-6"><div class="p-3 border bg-white">Sub-Module B</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding container">
+        <h3>Work Experience</h3>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-dark">
+                    <tr><th>Company</th><th>Role</th><th>Year</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Tech Solutions</td><td>Lead Dev</td><td>2024-Present</td></tr>
+                    <tr><td>Web Flow Inc</td><td>Junior Designer</td><td>2022-2023</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="gallery" class="section-padding bg-dark text-white">
+        <div class="container">
+            <h2 class="text-center mb-4">Project Gallery</h2>
+            <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://via.placeholder.com/800x400?text=Slide+1" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://via.placeholder.com/800x400?text=Slide+2" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding container">
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                        How I Work
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">I follow Agile methodologies to ensure rapid delivery.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding container">
+        <h2 class="text-center mb-5">Contact Me</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <form class="row g-3 needs-validation" novalidate>
+                    <div class="col-md-6">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control is-valid" value="John Doe" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text">@</span>
+                            <input type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Password (for account creation)</label>
+                        <input type="password" class="form-control is-invalid" required>
+                        <div class="invalid-feedback">Please provide a password.</div>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Inquiry Type</label>
+                        <select class="form-select">
+                            <option selected>Freelance Project</option>
+                            <option>Full-time Role</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="r" id="r1" checked>
+                            <label class="form-check-label" for="r1">Urgent</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <textarea class="form-control" rows="3" placeholder="Your Message"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">Submit Form</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="mb-3">
+            <a href="#" class="text-white me-3"><i class="bi bi-github fs-3" data-bs-toggle="tooltip" title="GitHub"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-linkedin fs-3" data-bs-toggle="popover" data-bs-content="Let's connect on LinkedIn!"></i></a>
+        </div>
+        <p>&copy; 2024 Digital Resume. Powered by Bootstrap.</p>
+    </footer>
+
+    <div class="modal fade" id="projectModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Project Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    This project was built using the Bootstrap 5 Grid System and jQuery.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            // jQuery click event to trigger modal
+            $('#jq-hero-btn').on('click', function() {
+                $('#projectModal').modal('show');
+            });
+
+            // Initialize Tooltip & Popover
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+            
+            const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+            const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+        });
+    </script>
+</body>
+</html>
